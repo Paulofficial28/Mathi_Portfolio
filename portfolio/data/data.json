@@ -1,0 +1,135 @@
+{
+    "profile": {
+        "name": "Mathiyazhagan C",
+        "nickname": "Mathi",
+        "roles": [
+            "Graphic Designer",
+            "Video Editor",
+            "Creative Engineer"
+        ],
+        "tagline": "Designing with Logic. Creating with Soul.",
+        "contact": {
+            "phone": "+91 7305369285",
+            "email": "mathiyazhagan1413@gmail.com",
+            "location": "India",
+            "social": {
+                "linkedin": "https://linkedin.com/in/mathiyazhagan-c",
+                "instagram": "https://instagram.com/mathi_creates",
+                "behance": "https://behance.net/mathiyazhagan",
+                "youtube": "https://youtube.com/@mathi_edits"
+            }
+        },
+        "education": {
+            "degree": "B.E. Computer Science Engineering",
+            "college": "Government College of Engineering, Erode (IRTT)",
+            "year": "2020-2024"
+        },
+        "experience": [
+            {
+                "company": "Zidio Development",
+                "role": "UI/UX Designer",
+                "description": "UI/UX Designer at Zidio Development. Worked on branding and social media assets."
+            },
+            {
+                "company": "I2Global",
+                "role": "Graphic Designer/Video Editor",
+                "description": "Graphic Designer/Video Editor at I2Global. Handled full-time design responsibilities."
+            }
+        ],
+        "skills": [
+            "Adobe Photoshop",
+            "Adobe Premiere Pro",
+            "Adobe After Effects",
+            "Lightroom",
+            "Adobe XD",
+            "Figma",
+            "DaVinci Resolve",
+            "CapCut"
+        ]
+    },
+    "projects": [
+        {
+            "id": 1,
+            "title": "Hukum Event Poster",
+            "category": "Graphic Design",
+            "description": "Concert poster design for Anirudh Ravichander featuring vibrant gradients.",
+            "image_filename": "poster-hukum.png"
+        },
+        {
+            "id": 2,
+            "title": "Typography Series",
+            "category": "Graphic Design",
+            "description": "Experimental typography exploring shape and meaning (Cigarette, Lazy, Happy).",
+            "image_filename": "typo.png"
+        },
+        {
+            "id": 3,
+            "title": "Sun & Moon Invite",
+            "category": "Graphic Design",
+            "description": "Minimalist monochrome 'Save the Date' invitation.",
+            "image_filename": "sun-moon-invite.png"
+        },
+        {
+            "id": 4,
+            "title": "Business Franchise Promo Video",
+            "category": "Video Editing",
+            "description": "Promotional video edit focusing on 'Delivering Real Value' with kinetic text.",
+            "video_url": "Business_Franchise_Promo_Video.mp4",
+            "image_filename": "21.png"
+        },
+        {
+            "id": 5,
+            "title": "Traditional Indian Wedding Invitation",
+            "category": "Video Editing",
+            "description": "Wedding invitation video edit featuring vibrant colors and dynamic motion graphics.",
+            "video_url": "Traditional_Indian_Wedding_Invitation_Video.mp4",
+            "image_filename": "3.png"
+        },
+        {
+            "id": 6,
+            "title": "Creative Gallery",
+            "category": "Visual Art",
+            "description": "A collection of my creative works and visual experiments.",
+            "image_filename": "2.png",
+            "gallery_images": [
+                "1.png",
+                "2.png",
+                "3.png",
+                "4.png",
+                "5.png",
+                "6.png",
+                "7.png",
+                "8.png",
+                "9.png",
+                "10.png",
+                "11.png",
+                "12.png",
+                "13.png",
+                "14.png",
+                "15.png",
+                "16.png",
+                "17.png",
+                "18.png",
+                "19.png",
+                "20.png",
+                "21.png",
+                "22.png",
+                "23.png",
+                "24.png"
+            ],
+            "gallery_videos": [
+                "Business_Franchise_Promo_Video.mp4",
+                "Business_Pitch_Presentation_Video.mp4",
+                "Dumanera_Shoe_Promotion_Video.mp4",
+                "Electric_Vehicle_Concept_Promo.mp4",
+                "I_Dont_Buy_Trend_Reel.mp4",
+                "Money_Edit_Reel.mp4",
+                "Resort_Ad_Creative_Video.mp4",
+                "S_Electric_Ad_Creative_Video.mp4",
+                "Traditional_Indian_Wedding_Invitation_Video.mp4",
+                "Yaxley_Global_Instagram_Reel.mp4"
+            ]
+        }
+    ],
+    "about_me_text": "I am a Computer Science Engineer turned Creative Designer. I bridge the gap between technical precision and visual storytelling. While I understand the code that powers the web, my true passion lies in the visuals that bring it to life. I specialize in transforming raw concepts into polished narratives using tools like Premiere Pro and Photoshop."
+}
