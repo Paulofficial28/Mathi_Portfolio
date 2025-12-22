@@ -1,10 +1,118 @@
 "use client";
 
 import { portfolioData } from "@/data/portfolio";
-import { motion, AnimatePresence } from "framer-motion";
-import { Github, ExternalLink, X } from "lucide-react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { ExternalLink, Github, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import ImageSkeleton from "./ui/ImageSkeleton";
+
+// --- Sub-component for the 3D Tilt Card ---
+const ProjectCard = ({ project, index, onClick }: { project: any, index: number, onClick: () => void }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseXSpring = useSpring(x);
+    const mouseYSpring = useSpring(y);
+
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    // Define Bento sizing: 1st project is large, others smaller
+    const isLarge = index === 0 || index === 3;
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+            viewport={{ once: true }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+            }}
+            className={`relative group h-[400px] rounded-3xl border border-white/10 bg-zinc-900/50 overflow-hidden cursor-pointer
+                ${isLarge ? "md:col-span-2" : "md:col-span-1"}`}
+            onClick={onClick}
+        >
+            {/* Background Image */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src={`/${project.image_filename}`}
+                    alt={project.title}
+                    fill
+                    className="object-cover opacity-50 group-hover:opacity-30 transition-opacity duration-500 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index < 3}
+                    quality={85}
+                />
+            </div>
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
+
+            {/* Content */}
+            <div
+                className="absolute inset-0 z-20 p-8 flex flex-col justify-end"
+                style={{ transform: "translateZ(50px)" }} // Pushes text forward in 3D
+            >
+                <span className="text-neon-green text-xs font-mono mb-2 block tracking-widest uppercase">
+                    {project.category}
+                </span>
+                <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-gray-400 text-sm line-clamp-2 mb-6 max-w-md">
+                    {project.description}
+                </p>
+
+                <div className="flex items-center gap-4">
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full text-sm font-medium"
+                    >
+                        View Project <ChevronRight className="w-4 h-4" />
+                    </motion.button>
+
+                    {project.video_url && (
+                        <a href={project.video_url} target="_blank" className="text-white/70 hover:text-neon-green transition-colors" onClick={(e) => e.stopPropagation()}>
+                            <ExternalLink className="w-5 h-5" />
+                        </a>
+                    )}
+                </div>
+            </div>
+
+            {/* Spotlight Glow Effect */}
+            <motion.div
+                className="absolute inset-0 z-30 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                style={{
+                    background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(39, 245, 175, 0.15), transparent 80%)`,
+                }}
+            />
+        </motion.div>
+    );
+};
 
 export default function Projects() {
     const [selectedProject, setSelectedProject] = useState<typeof portfolioData.projects[0] | null>(null);
@@ -51,74 +159,29 @@ export default function Projects() {
     };
 
     return (
-        <section id="projects" className="py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
-                        Featured <span className="text-neon-green">Projects</span>
-                    </h2>
+        <section id="projects" className="py-24 bg-black">
+            <div className="max-w-7xl mx-auto px-6">
+                {/* Header */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div>
+                        <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tighter">
+                            FEATURED <span className="text-neon-green italic">WORKS</span>
+                        </h2>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {portfolioData.projects.map((project, index) => (
-                            <div
-                                key={index}
-                                className="group bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-neon-green transition-all duration-300 flex flex-col"
-                            >
-                                <div
-                                    className="h-48 bg-black/50 flex items-center justify-center overflow-hidden relative cursor-pointer"
-                                    onClick={() => openGallery(project)}
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 pointer-events-none" />
-                                    {project.image_filename ? (
-                                        <Image
-                                            src={`/${project.image_filename}`}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover object-top group-hover:scale-110 transition-transform duration-500"
-                                        />
-                                    ) : (
-                                        <span className="z-20 text-gray-500 text-sm">
-                                            Video Content
-                                        </span>
-                                    )}
-                                </div>
-                                <div className="p-6 flex-1 flex flex-col">
-                                    <div className="mb-4">
-                                        <span className="text-xs font-bold text-neon-green uppercase tracking-wider">
-                                            {project.category}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-neon-green transition-colors">
-                                        {project.title}
-                                    </h3>
-                                    <p className="text-gray-400 mb-4 text-sm line-clamp-3 flex-1">
-                                        {project.description}
-                                    </p>
-
-                                    {project.video_url && (
-                                        <div className="mt-auto pt-4 border-t border-white/10">
-                                            <a
-                                                href={project.video_url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="flex items-center gap-2 text-sm text-neon-green hover:text-white transition-colors"
-                                            >
-                                                <ExternalLink className="w-4 h-4" /> Watch Video
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        ))}
                     </div>
-                </motion.div>
+                    <div className="h-px flex-1 bg-white/10 hidden md:block mx-12 mb-4" />
+
+                </div>
+
+                {/* Bento Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {portfolioData.projects.map((project, index) => (
+                        <ProjectCard key={index} project={project} index={index} onClick={() => openGallery(project)} />
+                    ))}
+                </div>
             </div>
 
+            {/* Modal Gallery */}
             <AnimatePresence>
                 {selectedProject && (
                     <motion.div
@@ -164,6 +227,8 @@ export default function Projects() {
                                                     alt={`${selectedProject.title} - ${currentMediaIndex + 1}`}
                                                     fill
                                                     className="object-contain"
+                                                    sizes="(max-width: 768px) 100vw, 80vw"
+                                                    quality={90}
                                                 />
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center p-8">
@@ -192,7 +257,6 @@ export default function Projects() {
                                         </>
                                     );
                                 } else if (selectedProject.video_url) {
-                                    // Fallback for single video projects
                                     return (
                                         <div className="w-full h-full flex flex-col items-center justify-center p-8">
                                             <video
@@ -211,13 +275,14 @@ export default function Projects() {
                                         </div>
                                     );
                                 } else {
-                                    // Fallback for single image projects
                                     return (
                                         <Image
                                             src={`/${selectedProject.image_filename}`}
                                             alt={selectedProject.title}
                                             fill
                                             className="object-contain"
+                                            sizes="(max-width: 768px) 100vw, 80vw"
+                                            quality={90}
                                         />
                                     );
                                 }

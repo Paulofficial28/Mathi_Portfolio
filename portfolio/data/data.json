@@ -10,13 +10,11 @@
         "tagline": "Designing with Logic. Creating with Soul.",
         "contact": {
             "phone": "+91 7305369285",
-            "email": "mathiyazhagan1413@gmail.com",
+            "email": "magzstudio14@gmail.com",
             "location": "India",
             "social": {
-                "linkedin": "https://linkedin.com/in/mathiyazhagan-c",
-                "instagram": "https://instagram.com/mathi_creates",
-                "behance": "https://behance.net/mathiyazhagan",
-                "youtube": "https://youtube.com/@mathi_edits"
+                "instagram": "https://www.instagram.com/magz._studio?igsh=eTdqOHg0MWlmYzBm",
+                "behance": "https://www.behance.net/mth24"
             }
         },
         "education": {
@@ -83,10 +81,18 @@
             "category": "Video Editing",
             "description": "Wedding invitation video edit featuring vibrant colors and dynamic motion graphics.",
             "video_url": "Traditional_Indian_Wedding_Invitation_Video.mp4",
-            "image_filename": "3.png"
+            "image_filename": "4.png"
         },
         {
             "id": 6,
+            "title": "Dumanera Shoe Promotion",
+            "category": "Video Editing",
+            "description": "Dynamic product showcase for Dumanera footwear with sleek transitions and modern aesthetics.",
+            "video_url": "Dumanera_Shoe_Promotion_Video.mp4",
+            "image_filename": "DUMANERA LOGO.png"
+        },
+        {
+            "id": 7,
             "title": "Creative Gallery",
             "category": "Visual Art",
             "description": "A collection of my creative works and visual experiments.",

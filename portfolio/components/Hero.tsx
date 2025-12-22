@@ -3,7 +3,7 @@
 import { portfolioData } from "@/data/portfolio";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import MagneticButton from "./ui/MagneticButton";
 import Image from "next/image";
 
@@ -46,22 +46,34 @@ export default function Hero() {
                             {portfolioData.profile.tagline}
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <div className="inline-flex flex-col gap-4 w-auto">
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <MagneticButton>
+                                    <Link
+                                        href="#projects"
+                                        className="px-8 py-4 bg-neon-green text-black font-bold rounded-full hover:bg-white transition-colors duration-300 flex items-center justify-center gap-2 whitespace-nowrap"
+                                    >
+                                        View Work <ArrowRight className="w-4 h-4" />
+                                    </Link>
+                                </MagneticButton>
+                                <MagneticButton>
+                                    <Link
+                                        href="#contact"
+                                        className="px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:border-neon-green hover:text-neon-green transition-all duration-300 bg-white/5 backdrop-blur-sm whitespace-nowrap"
+                                    >
+                                        Contact Me
+                                    </Link>
+                                </MagneticButton>
+                            </div>
                             <MagneticButton>
-                                <Link
-                                    href="#projects"
-                                    className="px-8 py-4 bg-neon-green text-black font-bold rounded-full hover:bg-white transition-colors duration-300 flex items-center justify-center gap-2"
+                                <a
+                                    href="/Mathi_Portfolio_Resume.pdf"
+                                    download="Mathi_Portfolio_Resume.pdf"
+                                    className="px-8 py-4 border border-neon-green/50 text-neon-green font-medium rounded-full hover:bg-neon-green hover:text-black transition-all duration-300 bg-neon-green/10 backdrop-blur-sm flex items-center justify-center gap-2 whitespace-nowrap"
                                 >
-                                    View Work <ArrowRight className="w-4 h-4" />
-                                </Link>
-                            </MagneticButton>
-                            <MagneticButton>
-                                <Link
-                                    href="#contact"
-                                    className="px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:border-neon-green hover:text-neon-green transition-all duration-300 bg-white/5 backdrop-blur-sm"
-                                >
-                                    Contact Me
-                                </Link>
+                                    <Download className="w-4 h-4" />
+                                    Download Resume
+                                </a>
                             </MagneticButton>
                         </div>
                     </motion.div>
@@ -86,7 +98,6 @@ export default function Hero() {
                                 }}
                                 className="relative aspect-square rounded-3xl overflow-hidden border-4 border-neon-green/30 shadow-2xl shadow-neon-green/20"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-br from-neon-green/20 to-deep-purple/20 z-10 mix-blend-overlay" />
                                 <Image
                                     src="/profile_1.jpg"
                                     alt={portfolioData.profile.name}
@@ -121,7 +132,6 @@ export default function Hero() {
                                 }}
                                 className="absolute -bottom-12 -right-8 w-48 h-48 md:w-64 md:h-64 rounded-2xl overflow-hidden border-3 border-white/20 shadow-xl backdrop-blur-sm bg-white/5"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-tl from-neon-green/30 to-transparent z-10 mix-blend-overlay" />
                                 <Image
                                     src="/profile_2.jpg"
                                     alt={`${portfolioData.profile.name} - Alternative`}
