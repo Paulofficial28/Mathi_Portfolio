@@ -72,7 +72,7 @@
             "title": "Business Franchise Promo Video",
             "category": "Video Editing",
             "description": "Promotional video edit focusing on 'Delivering Real Value' with kinetic text.",
-            "video_url": "Business_Franchise_Promo_Video.mp4",
+            "video_url": "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583981/Business_Franchise_Promo_Video_ztab8b.mp4",
             "image_filename": "21.png"
         },
         {
@@ -80,7 +80,7 @@
             "title": "Traditional Indian Wedding Invitation",
             "category": "Video Editing",
             "description": "Wedding invitation video edit featuring vibrant colors and dynamic motion graphics.",
-            "video_url": "Traditional_Indian_Wedding_Invitation_Video.mp4",
+            "video_url": "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583981/Traditional_Indian_Wedding_Invitation_Video_n8omb7.mp4",
             "image_filename": "4.png"
         },
         {
@@ -88,7 +88,7 @@
             "title": "Dumanera Shoe Promotion",
             "category": "Video Editing",
             "description": "Dynamic product showcase for Dumanera footwear with sleek transitions and modern aesthetics.",
-            "video_url": "Dumanera_Shoe_Promotion_Video.mp4",
+            "video_url": "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583926/Dumanera_Shoe_Promotion_Video_kworgp.mp4",
             "image_filename": "DUMANERA LOGO.png"
         },
         {
@@ -124,16 +124,15 @@
                 "24.png"
             ],
             "gallery_videos": [
-                "Business_Franchise_Promo_Video.mp4",
-                "Business_Pitch_Presentation_Video.mp4",
-                "Dumanera_Shoe_Promotion_Video.mp4",
-                "Electric_Vehicle_Concept_Promo.mp4",
-                "I_Dont_Buy_Trend_Reel.mp4",
-                "Money_Edit_Reel.mp4",
-                "Resort_Ad_Creative_Video.mp4",
-                "S_Electric_Ad_Creative_Video.mp4",
-                "Traditional_Indian_Wedding_Invitation_Video.mp4",
-                "Yaxley_Global_Instagram_Reel.mp4"
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583981/Business_Franchise_Promo_Video_ztab8b.mp4",
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583973/Business_Pitch_Presentation_Video_xlktqv.mp4",
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583926/Dumanera_Shoe_Promotion_Video_kworgp.mp4",
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583961/Electric_Vehicle_Concept_Promo_wqnfmd.mp4",
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583935/I_Dont_Buy_Trend_Reel_viehsz.mp4",
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583935/Money_Edit_Reel_tpniwa.mp4",
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766584075/Resort_Ad_Creative_Video_va68um.mp4",
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583937/S_Electric_Ad_Creative_Video_qssbaa.mp4",
+                "https://res.cloudinary.com/dhfzaqbz1/video/upload/v1766583981/Traditional_Indian_Wedding_Invitation_Video_n8omb7.mp4"
             ]
         }
     ],

@@ -241,7 +241,7 @@ export default function Projects() {
                                                         preload="metadata"
                                                         className="max-w-full max-h-full rounded-lg shadow-2xl"
                                                     >
-                                                        <source src={`/${currentItem.src}`} type="video/mp4" />
+                                                        <source src={currentItem.src.startsWith('http') ? currentItem.src : `/${currentItem.src}`} type="video/mp4" />
                                                         Your browser does not support the video tag.
                                                     </video>
                                                 </div>
@@ -272,7 +272,7 @@ export default function Projects() {
                                                 className="w-full h-full rounded-lg shadow-2xl"
                                                 style={{ maxHeight: '100%', maxWidth: '100%' }}
                                             >
-                                                <source src={`/${selectedProject.video_url}`} type="video/mp4" />
+                                                <source src={selectedProject.video_url.startsWith('http') ? selectedProject.video_url : `/${selectedProject.video_url}`} type="video/mp4" />
                                                 Your browser does not support the video tag.
                                             </video>
                                             <div className="absolute top-8 left-1/2 -translate-x-1/2 bg-black/70 px-4 py-2 rounded-lg">
