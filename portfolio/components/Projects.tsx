@@ -236,6 +236,9 @@ export default function Projects() {
                                                         key={currentItem.src}
                                                         controls
                                                         autoPlay
+                                                        muted
+                                                        playsInline
+                                                        preload="metadata"
                                                         className="max-w-full max-h-full rounded-lg shadow-2xl"
                                                     >
                                                         <source src={`/${currentItem.src}`} type="video/mp4" />
@@ -263,6 +266,9 @@ export default function Projects() {
                                                 key={selectedProject.video_url}
                                                 controls
                                                 autoPlay
+                                                muted
+                                                playsInline
+                                                preload="metadata"
                                                 className="w-full h-full rounded-lg shadow-2xl"
                                                 style={{ maxHeight: '100%', maxWidth: '100%' }}
                                             >
